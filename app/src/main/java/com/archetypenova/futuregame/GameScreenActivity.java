@@ -139,6 +139,9 @@ public class GameScreenActivity extends AppCompatActivity
             public void run() {
                 mMap.clear();
                 //TODO:陣の色の変更と陣のアイコンの変更と反映
+                for(CircleOptions co : cOptions){
+                    resetMarker(co);
+                }
             }
         });
     }
@@ -146,8 +149,10 @@ public class GameScreenActivity extends AppCompatActivity
     private static void resetMarker(final CircleOptions co){
         if(red == co.getFillColor()){
             //　チームアイコン追加(赤)
+            addMarker(R.mipmap.ika_red, co.getCenter());
         }else{
             //　チームアイコン追加(青)
+            addMarker(R.mipmap.ika_blue, co.getCenter());
         }
     }
 
