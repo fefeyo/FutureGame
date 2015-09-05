@@ -21,24 +21,32 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textSize="100sp"
+            android:gravity="center"
             app:fa_icon="fa-github"/>
 
         <com.beardedhen.androidbootstrap.FontAwesomeText
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textSize="100sp"
+            android:gravity="center"
             app:fa_icon="fa-github"/>
 
         <com.beardedhen.androidbootstrap.FontAwesomeText
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="100sp"
             app:fa_icon="fa-github"/>
 
         <com.beardedhen.androidbootstrap.FontAwesomeText
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="100sp"
             app:fa_icon="fa-github"/>
 
     </LinearLayout>

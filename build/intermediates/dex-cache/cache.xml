@@ -2,193 +2,200 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-0ae1c2a114858cbb54af50e0c42d14f275941ade.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-2c40889b726052141a0bfe5b0e1da8b9b85dfc02.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-5c047de3ac21f35daf929efacc0477f4f3415847.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.beardedhen\androidbootstrap\1.2.3\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="11cd8b9af3b27673eceda7335192cd01b423ef26">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-80eb502e1ab74851852d88c25f86b4c55b5f6f84.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-4b07ce54fb5cb2ced52d3f1a3be51ef00608002a.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-3722c5ff5af91e3b2ef60c01ace4dc208b08c2c2.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-92085091add51a3cebc517748156b9334bf50866.jar" />
+        revision="23.0.1"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-6de450dad5459ca93994bdc81ecb909b3a014ec1.jar" />
     </item>
     <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-9682e6c0fedb9509b1c215cb4353401477c58bc5.jar" />
     </item>
     <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-aad3e2f5480fd84d2208139a45aca5de3215f006.jar" />
     </item>
     <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-db8df38f65decf282bbdf851bd689161b5d530d9.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-6f88374976922c4529d47bc4ce458210e6b0a046.jar" />
-    </item>
-    <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-c584c7481cc328c1c944c7716a418783765df523.jar" />
     </item>
     <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-db8df38f65decf282bbdf851bd689161b5d530d9.jar" />
+    </item>
+    <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-bf21cd56e21d7b5a6c73d205c8b04003e7cf420f.jar" />
     </item>
     <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-6de450dad5459ca93994bdc81ecb909b3a014ec1.jar" />
-    </item>
-    <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-42e803ab937cae51269c3de9b545044d959884c4.jar" />
     </item>
     <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-76d080fffc5fb2593f76d5adc36b6fe40202f78d.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-eb01e2d23e7207eb5ba293e03ff357d0b732632f.jar" />
-    </item>
-    <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-73f490535c2495e639d0b156046af376a78f9904.jar" />
     </item>
     <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-bd94825370a25b0bba1b2214d67d3028e0972764.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-1d819db6cb7f3656d69aeb58fc6b4164848940f6.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-94d919f3cc73d33fda40a77b0532de48e8803402.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-ac82f7703dff596913738e5d60ec53f8e20ca325.jar" />
-    </item>
-    <item
-        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-061f952c139148b86720d29eb7b16cc39d56c311.jar" />
+        revision="23.0.1"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-eb01e2d23e7207eb5ba293e03ff357d0b732632f.jar" />
     </item>
     <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-80721b24f014b119d76dac9d5443a0d44efd7cf6.jar" />
     </item>
     <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="f8efd0096475e0daf054267b61544e10dc776503">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-b5cfc0a61caa631acea188d56b987de0143e862e.jar" />
     </item>
     <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-80f93181903aa4e7b30e85a8313767d83509e2b8.jar" />
     </item>
     <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-94d919f3cc73d33fda40a77b0532de48e8803402.jar" />
+    </item>
+    <item
         jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
         jumboMode="false"
-        revision="23.0.0 rc3"
+        revision="23.0.1"
         sha1="02bac2dc792d78241077861566f2c82da955e7fa">
         <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-cca6af2a5f92b9c3542fc0e35329d38d27595dd6.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-ac82f7703dff596913738e5d60ec53f8e20ca325.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-bd94825370a25b0bba1b2214d67d3028e0972764.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-6f88374976922c4529d47bc4ce458210e6b0a046.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-1d819db6cb7f3656d69aeb58fc6b4164848940f6.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-061f952c139148b86720d29eb7b16cc39d56c311.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-0ae1c2a114858cbb54af50e0c42d14f275941ade.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-2c40889b726052141a0bfe5b0e1da8b9b85dfc02.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-76d080fffc5fb2593f76d5adc36b6fe40202f78d.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-4b07ce54fb5cb2ced52d3f1a3be51ef00608002a.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-5c047de3ac21f35daf929efacc0477f4f3415847.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.8\77bbfe240e437ecb396d982afa0d3bd4f9090ba7\android-async-http-1.4.8.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="77bbfe240e437ecb396d982afa0d3bd4f9090ba7">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.8-87842f4ec8d6d5e0a0e64a09878f624a4e45bf45.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.beardedhen\androidbootstrap\1.2.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="11cd8b9af3b27673eceda7335192cd01b423ef26">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-80eb502e1ab74851852d88c25f86b4c55b5f6f84.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-3722c5ff5af91e3b2ef60c01ace4dc208b08c2c2.jar" />
+    </item>
+    <item
+        jar="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="C:\Users\USER\Desktop\Develop\Android\FutureGame\app\build\intermediates\pre-dexed\debug\classes-92085091add51a3cebc517748156b9334bf50866.jar" />
     </item>
 
 </items>
