@@ -25,8 +25,8 @@
 			android:layout_height="wrap_content">
 
 			<com.beardedhen.androidbootstrap.BootstrapButton
-				android:id="@+id/quick_play"
-				android:text="クイックマッチ"
+				android:id="@+id/invite_room"
+				android:text="部屋に入る"
 				android:textSize="@dimen/small_text"
 				android:layout_marginRight="@dimen/large_dimen"
 				app:bb_type="danger"
@@ -35,8 +35,8 @@
 				android:layout_height="150dp"/>
 
 			<com.beardedhen.androidbootstrap.BootstrapButton
-				android:id="@+id/invite_play"
-				android:text="招待してプレイ"
+				android:id="@+id/make_room"
+				android:text="部屋を作る"
 				android:textSize="@dimen/small_text"
 				app:bb_roundedCorners="true"
 				android:layout_marginLeft="@dimen/large_dimen"
