@@ -1,0 +1,46 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/game_map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <com.beardedhen.androidbootstrap.FontAwesomeText
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:fa_icon="fa-github"/>
+
+        <com.beardedhen.androidbootstrap.FontAwesomeText
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:fa_icon="fa-github"/>
+
+        <com.beardedhen.androidbootstrap.FontAwesomeText
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:fa_icon="fa-github"/>
+
+        <com.beardedhen.androidbootstrap.FontAwesomeText
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:fa_icon="fa-github"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<FrameLayout
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<LinearLayout
+		android:layout_gravity="center"
+		android:orientation="vertical"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:text="マッチングタイプ選択"
+			android:textSize="30sp"
+			android:textColor="#000"
+			android:gravity="center"
+			android:layout_marginBottom="50dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:text="クイックマッチ"
+				android:textSize="@dimen/small_text"
+				android:layout_marginRight="@dimen/large_dimen"
+				app:bb_type="danger"
+				app:be_roundedCorners="true"
+				android:layout_width="150dp"
+				android:layout_height="150dp"/>
+
+			<com.beardedhen.androidbootstrap.BootstrapButton
+				android:text="招待してプレイ"
+				android:textSize="@dimen/small_text"
+				app:be_roundedCorners="true"
+				android:layout_marginLeft="@dimen/large_dimen"
+				app:bb_type="warning"
+				android:layout_width="150dp"
+				android:layout_height="150dp"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+</FrameLayout>

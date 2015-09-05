@@ -1,0 +1,9 @@
+<TextView
+    android:id="@+id/main_start"
+    android:text="START!"
+    android:gravity="center"
+    android:textColor="#000"
+    android:textSize="50sp"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
