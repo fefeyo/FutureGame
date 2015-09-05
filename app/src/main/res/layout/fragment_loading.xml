@@ -26,7 +26,7 @@
 
 	<com.beardedhen.androidbootstrap.BootstrapButton
 		android:id="@+id/match_start"
-		app:be_roundedCorners="true"
+		app:bb_roundedCorners="true"
 		app:bb_type="info"
 		android:text="ゲームスタート"
 		android:layout_gravity="center"

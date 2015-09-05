@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+
 public class StartScreenActivity extends AppCompatActivity implements View.OnClickListener{
 
     private SharedPreferences mPreference;

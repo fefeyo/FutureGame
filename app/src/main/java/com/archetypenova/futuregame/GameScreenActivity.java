@@ -55,12 +55,12 @@ public class GameScreenActivity extends AppCompatActivity
 
         spot1 = new LatLng(35.665722, 139.740220);
         spot2 = new LatLng(35.665526, 139.739272);
-        spot3= new LatLng(35.665121, 139.739098 );
+        spot3= new LatLng(35.664913, 139.739032 );
         spot4= new LatLng(35.666189, 139.739612);
-        spot5 = new LatLng(35.666025, 139.739224);
+        spot5 = new LatLng(35.664135, 139.738844);
         now = new LatLng(35.665126, 139.739018);
         spots = new LatLng[]{spot1, spot2, spot3, spot4, spot5, now};
-        cOptions = new CircleOptions[4];
+        cOptions = new CircleOptions[5];
 
         onMapReadyIfNeeded();
 
@@ -105,7 +105,7 @@ public class GameScreenActivity extends AppCompatActivity
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         for(int i = 0; i < cOptions.length; i++){
-            cOptions[i] = createSpot(Color.WHITE, spots[i]);
+            cOptions[i] = createSpot(Color.RED, spots[i]);
             mMap.addCircle(cOptions[i]);
         }
 
