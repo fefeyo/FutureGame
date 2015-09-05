@@ -58,7 +58,7 @@ public class GameScreenActivity extends AppCompatActivity
         spot3= new LatLng(35.665121, 139.739098 );
         spot4= new LatLng(35.666189, 139.739612);
         spot5 = new LatLng(35.666025, 139.739224);
-        now = new LatLng(128.554456, 128.42343241);
+        now = new LatLng(35.665126, 139.739018);
         spots = new LatLng[]{spot1, spot2, spot3, spot4, spot5, now};
         cOptions = new CircleOptions[4];
 
