@@ -43,7 +43,6 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     private SharedPreferences mPrefrerences;
 
     private static ArrayAdapter<String> adapter;
-    private static String roomId;
     private static String userId;      //使うかは不明
     private static String userName;
     private static String[] names;
@@ -96,7 +95,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
 
     public void clickEnable(){
         final RequestParams params = new RequestParams();
-        params.put("room_id",roomId);
+        params.put("room_id",MatchingActivity.roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),
@@ -147,7 +146,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                         try {
                             final String result = new String(responseBody,"UTF-8");
                             JSONObject json = new JSONObject(result);
-                            roomId = json.getString("room_id");
+                            MatchingActivity.roomId = json.getString("room_id");
                         }catch (UnsupportedEncodingException | JSONException e){
                             e.printStackTrace();
                         }
@@ -198,7 +197,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     //　プレイヤーの参加状況確認用
     private void checkUser(){
         final RequestParams params = new RequestParams();
-        params.put("room_id", roomId);
+        params.put("room_id", MatchingActivity.roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),

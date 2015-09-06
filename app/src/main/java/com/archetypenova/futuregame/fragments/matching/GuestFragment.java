@@ -41,7 +41,6 @@ public class GuestFragment extends Fragment {
     private TextView text;
     private SharedPreferences mPreferences;
 
-    private static String roomId;
     private static String[] names;
     private static int[] colors;
     private static ArrayAdapter<String> adapter;
@@ -72,7 +71,7 @@ public class GuestFragment extends Fragment {
 
     private void getStartBoolean(){
         RequestParams params = new RequestParams();
-        params.put("room_id",roomId);
+        params.put("room_id",MatchingActivity.roomId);
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),
@@ -132,8 +131,8 @@ public class GuestFragment extends Fragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                roomId = edit.getText().toString();
-                text.setText(roomId);
+                MatchingActivity.roomId = edit.getText().toString();
+                text.setText(MatchingActivity.roomId);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -147,7 +146,7 @@ public class GuestFragment extends Fragment {
     private void enterRoom(){
         final RequestParams params = new RequestParams();
         params.put("user_id", mPreferences.getString("id", null));
-        params.put("room_id", roomId);
+        params.put("room_id", MatchingActivity.roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),
@@ -177,7 +176,7 @@ public class GuestFragment extends Fragment {
     //マッチング待機中
     private void matchingUser(){
         final RequestParams params = new RequestParams();
-        params.put("room_id",roomId);
+        params.put("room_id",MatchingActivity.roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),

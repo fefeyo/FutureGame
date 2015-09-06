@@ -12,6 +12,7 @@ import com.archetypenova.futuregame.fragments.matching.SwitchMatchingFragment;
 public class MatchingActivity extends AppCompatActivity {
 
     public static int color;
+    public static String roomId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
