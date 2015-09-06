@@ -76,7 +76,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
         mListView = (ListView)v.findViewById(R.id.user_list);
         match_start = (BootstrapButton)v.findViewById(R.id.match_start);
         match_start.setOnClickListener(this);
-        match_start.setEnabled(false);
+//        match_start.setEnabled(false);
         mPrefrerences = getActivity().getSharedPreferences("area_hack", Context.MODE_PRIVATE);
 
         createRoom();

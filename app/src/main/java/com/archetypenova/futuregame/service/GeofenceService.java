@@ -3,7 +3,11 @@ package com.archetypenova.futuregame.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.archetypenova.futuregame.GameScreenActivity;
+import com.google.android.gms.maps.model.LatLng;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -19,6 +23,11 @@ import java.io.UnsupportedEncodingException;
 public class GeofenceService extends IntentService{
 
     private Handler mHanlder;
+
+    private boolean userSuccessed;
+
+    private LatLng[] playerPosition;
+    private int[] flagState;
 
     private Runnable checkData = new Runnable() {
         @Override
@@ -39,6 +48,10 @@ public class GeofenceService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.i("id", intent.getIntExtra("id", 1000)+"");
+        Toast.makeText(getApplicationContext(), intent.getIntExtra("id", 100000)+"", Toast.LENGTH_SHORT).show();
+        playerPosition = new LatLng[4];
+        flagState = new int[5];
         mHanlder = new Handler();
         mHanlder.post(checkData);
     }
@@ -58,11 +71,17 @@ public class GeofenceService extends IntentService{
                         }catch (UnsupportedEncodingException|JSONException e){
                             e.printStackTrace();
                         }
+                        userSuccessed = true;
+                    }
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        userSuccessed = false;
                     }
 
                     @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                    public void onFinish() {
+                        super.onFinish();
+                        GameScreenActivity.setPlayerMarker(playerPosition);
                     }
                 }
         );

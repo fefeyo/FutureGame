@@ -3,6 +3,7 @@ package com.archetypenova.futuregame;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class StartScreenActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_main);
 
         final TextView start = (TextView)findViewById(R.id.main_start);
+        start.setTypeface(Typeface.createFromAsset(getAssets(), "dot.ttf"));
         start.setOnClickListener(this);
 
         mPreference = getSharedPreferences("area_hack", MODE_PRIVATE);
