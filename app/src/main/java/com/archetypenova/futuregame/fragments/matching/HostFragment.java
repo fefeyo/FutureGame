@@ -72,18 +72,18 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View v =  inflater.inflate(R.layout.fragment_loading, container, false);
-
-        mListView = (ListView)v.findViewById(R.id.user_list);
+//
+//        mListView = (ListView)v.findViewById(R.id.user_list);
         match_start = (BootstrapButton)v.findViewById(R.id.match_start);
         match_start.setOnClickListener(this);
-//        match_start.setEnabled(false);
-        mPrefrerences = getActivity().getSharedPreferences("area_hack", Context.MODE_PRIVATE);
-
-        createRoom();
-
-        mHandler = new Handler();
-
-        mHandler.post(runnable);
+////        match_start.setEnabled(false);
+//        mPrefrerences = getActivity().getSharedPreferences("area_hack", Context.MODE_PRIVATE);
+//
+//        createRoom();
+//
+//        mHandler = new Handler();
+//
+//        mHandler.post(runnable);
 
         return v;
     }
@@ -92,35 +92,36 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.match_start:
-                final RequestParams params = new RequestParams();
-                final AsyncHttpClient client = new AsyncHttpClient();
-                client.get(
-                        getActivity().getApplicationContext(),
-                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",         //TODO URLの入力（StartAPI)
-                        params,
-                        new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                try {
-                                    final String result = new String(responseBody,"UTF-8");
-                                    JSONObject json = new JSONObject(result);
-                                    start = json.getBoolean("aaaaaaaaaaaaaaaaa");       //TODO カラム名の入力(StartAPI)
-                                }catch (UnsupportedEncodingException|JSONException e){
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                            }
-                        }
-                );
+                final Intent i = new Intent(getActivity().getApplicationContext(), GameScreenActivity.class);
+                startActivity(i);
+//                final RequestParams params = new RequestParams();
+//                final AsyncHttpClient client = new AsyncHttpClient();
+//                client.get(
+//                        getActivity().getApplicationContext(),
+//                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",         //TODO URLの入力（StartAPI)
+//                        params,
+//                        new AsyncHttpResponseHandler() {
+//                            @Override
+//                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                                try {
+//                                    final String result = new String(responseBody,"UTF-8");
+//                                    JSONObject json = new JSONObject(result);
+//                                    start = json.getBoolean("aaaaaaaaaaaaaaaaa");       //TODO カラム名の入力(StartAPI)
+//                                }catch (UnsupportedEncodingException|JSONException e){
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//
+//                            }
+//                        }
+//                );
         }
     }
 
     private void setAdapter(){
-
         adapter = new ArrayAdapter<>(
                 getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1,

@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameScreenActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,
@@ -141,16 +142,21 @@ public class GameScreenActivity extends AppCompatActivity
         return co;
     }
 
-    public static void syncSpot(){
+    public static void syncSpot(final HashMap<Integer, Integer> flagState){
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mMap.clear();
                 //TODO:陣の色の変更と陣のアイコンの変更と反映
+                int i = 0;
                 for (CircleOptions co : cOptions) {
-                    co.fillColor(red);
-                    mMap.addCircle(co);
-                    resetMarker(co);
+                    if(flagState.get(i) == 1) {
+                        co.fillColor(red);
+                    }else {
+                        co.fillColor(blue);
+                    }
+                        mMap.addCircle(co);
+                        resetMarker(co);
                 }
             }
         });
