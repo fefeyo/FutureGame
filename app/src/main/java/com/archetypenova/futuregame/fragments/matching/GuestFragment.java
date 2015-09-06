@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.archetypenova.futuregame.GameScreenActivity;
+import com.archetypenova.futuregame.MatchingActivity;
 import com.archetypenova.futuregame.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -56,6 +57,7 @@ public class GuestFragment extends Fragment {
             adapterSet();
             getStartBoolean();
             if(start){
+                mHandler.removeCallbacks(runnable);
                 Intent i = new Intent(getActivity(),GameScreenActivity.class);
                 startActivity(i);
             }
@@ -70,19 +72,20 @@ public class GuestFragment extends Fragment {
 
     private void getStartBoolean(){
         RequestParams params = new RequestParams();
+        params.put("room_id",roomId);
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),
-                "URLLLLLLLLLLLLLL",     //TODO URLの入力（StartAPI)
+                "http://54.65.82.21/checkStart.php",
                 params,
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        try{
-                            final String result = new String(responseBody,"UTF-8");
+                        try {
+                            final String result = new String(responseBody, "UTF-8");
                             JSONObject json = new JSONObject(result);
-                            start = json.getBoolean("カラムカラムカラムカラムカラムカラム");  //TODO  カラム名の入力（StartAPI）
-                        }catch (UnsupportedEncodingException|JSONException e){
+                            start = json.getBoolean("judge");
+                        } catch (UnsupportedEncodingException | JSONException e) {
                             e.printStackTrace();
                         }
                     }
@@ -108,9 +111,6 @@ public class GuestFragment extends Fragment {
         checkRoomId();
 
         enterRoom();
-
-        mHandler = new Handler();
-        mHandler.post(runnable);
 
         return v;
     }
@@ -177,22 +177,27 @@ public class GuestFragment extends Fragment {
     //マッチング待機中
     private void matchingUser(){
         final RequestParams params = new RequestParams();
-        params.put("user_name",mPreferences.getString("name",null));
         params.put("room_id",roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getActivity().getApplicationContext(),
-                "あああああああああああああああ",
+                "http://54.65.82.21/checkRoom.php",
                 params,
                 new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         try {
                             final String result = new String(responseBody,"UTF-8");
-                            JSONArray jsonArray = new JSONArray(result);
+                            JSONObject json = new JSONObject(result);
+                            JSONArray jsonArray = json.getJSONArray("user_info");
                             for (int i=0;i>jsonArray.length();i++){
-                                JSONObject json = jsonArray.getJSONObject(i);
-                                names[i] = json.getString("user_name");
+                                JSONObject userInfo = jsonArray.getJSONObject(i);
+                                names[i] = userInfo.getString("user_name");
+                                colors[i] = userInfo.getInt("color");
+                                String id = mPreferences.getString("id",null);
+                                if (id.equals(userInfo.getString("user_id"))){
+                                    MatchingActivity.color=userInfo.getInt("color");
+                                }
                             }
                         }catch(UnsupportedEncodingException|JSONException e){
                             e.printStackTrace();
@@ -203,36 +208,17 @@ public class GuestFragment extends Fragment {
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
                     }
-                }
-        );
-    }
 
-    private void gameStart(){
-        final RequestParams params = new RequestParams();
-        final AsyncHttpClient client = new AsyncHttpClient();
-        client.get(
-                getActivity().getApplicationContext(),
-                "あああああああああああああああ",
-                params,
-                new AsyncHttpResponseHandler() {
                     @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        try {
-                            final String result = new String(responseBody,"UTF-8");
-                            JSONObject json = new JSONObject();
-                            boolean Flag = json.getBoolean("あああああああああああああああああああああ");
-                        }catch (UnsupportedEncodingException|JSONException e){
-                            e.printStackTrace();
+                    public void onFinish() {
+                        super.onFinish();
+                        if (mHandler==null){
+                            mHandler = new Handler();
+                            mHandler.post(runnable);
                         }
                     }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                    }
                 }
         );
 
     }
-
 }

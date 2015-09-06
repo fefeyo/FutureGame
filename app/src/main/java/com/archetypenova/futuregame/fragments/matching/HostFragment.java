@@ -58,6 +58,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
             checkUser();
             setAdapter();
             if(start){
+                mHandler.removeCallbacks(runnable);
                 Intent i = new Intent(getActivity(),GameScreenActivity.class);
                 startActivity(i);
             }
@@ -81,10 +82,6 @@ public class HostFragment extends Fragment implements View.OnClickListener{
 
         createRoom();
 
-        mHandler = new Handler();
-
-        mHandler.post(runnable);
-
         return v;
     }
 
@@ -92,31 +89,37 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.match_start:
-                final RequestParams params = new RequestParams();
-                final AsyncHttpClient client = new AsyncHttpClient();
-                client.get(
-                        getActivity().getApplicationContext(),
-                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",         //TODO URLの入力（StartAPI)
-                        params,
-                        new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                try {
-                                    final String result = new String(responseBody,"UTF-8");
-                                    JSONObject json = new JSONObject(result);
-                                    start = json.getBoolean("aaaaaaaaaaaaaaaaa");       //TODO カラム名の入力(StartAPI)
-                                }catch (UnsupportedEncodingException|JSONException e){
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                            }
-                        }
-                );
+                clickEnable();
+                break;
         }
+    }
+
+    public void clickEnable(){
+        final RequestParams params = new RequestParams();
+        params.put("room_id",roomId);
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.get(
+                getActivity().getApplicationContext(),
+                "http://54.65.82.21/startGame.php",         //TODO URLの入力（StartAPI)
+                params,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            final String result = new String(responseBody,"UTF-8");
+                            JSONObject json = new JSONObject(result);
+                            start = json.getBoolean("judge");       //TODO カラム名の入力(StartAPI)
+                        }catch (UnsupportedEncodingException|JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                }
+        );
     }
 
     private void setAdapter(){
@@ -145,7 +148,6 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                             final String result = new String(responseBody,"UTF-8");
                             JSONObject json = new JSONObject(result);
                             roomId = json.getString("room_id");
-                            userId = json.getString("user_id");
                         }catch (UnsupportedEncodingException | JSONException e){
                             e.printStackTrace();
                         }
@@ -196,7 +198,6 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     //　プレイヤーの参加状況確認用
     private void checkUser(){
         final RequestParams params = new RequestParams();
-        params.put("user_id", mPrefrerences.getString("id", null));
         params.put("room_id", roomId);
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
@@ -211,7 +212,6 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                             JSONObject json = new JSONObject(result);
                             judge = json.getBoolean("judge");
                             if (judge) {
-                                mHandler.removeCallbacks(runnable);
                                 match_start.setEnabled(true);
                             }
                             JSONArray jsonArray = json.getJSONArray("user_info");
@@ -219,6 +219,10 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                                 JSONObject userInfo = jsonArray.getJSONObject(i);
                                 names[i]=userInfo.getString("user_name");
                                 colors[i]=userInfo.getInt("color"); //TODO getViewのpositionで色分け判定
+                                String id = mPrefrerences.getString("id", null);
+                                if (id.equals(userInfo.getString("user_id"))){
+                                    MatchingActivity.color=userInfo.getInt("color");
+                                }
                             }
                         }catch (UnsupportedEncodingException|JSONException e){
                             e.printStackTrace();
@@ -228,6 +232,15 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        if (mHandler==null){
+                            mHandler = new Handler();
+                            mHandler.post(runnable);
+                        }
                     }
                 }
         );
