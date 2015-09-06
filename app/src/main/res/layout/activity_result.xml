@@ -13,6 +13,7 @@
 
         <TextView
             android:text="○○チームの勝利！"
+            android:id="@+id/resultText"
             android:textSize="@dimen/large_text"
             android:layout_marginBottom="@dimen/large_dimen"
             android:gravity="center"
@@ -26,11 +27,13 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/red"
                 android:layout_marginRight="@dimen/large_dimen"
                 android:layout_width="150dp"
                 android:layout_height="150dp"/>
 
             <ImageView
+                android:id="@+id/blue"
                 android:layout_marginLeft="@dimen/large_dimen"
                 android:layout_width="150dp"
                 android:layout_height="150dp"/>
@@ -38,9 +41,19 @@
         </LinearLayout>
 
         <ProgressBar
+            android:id="@+id/gauge"
             android:layout_marginTop="@dimen/large_dimen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/returnButton"
+            android:background="#ecf0f1"
+            android:text="タイトルに戻る"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
     
