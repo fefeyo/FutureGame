@@ -11,6 +11,8 @@ import com.archetypenova.futuregame.fragments.matching.SwitchMatchingFragment;
 
 public class MatchingActivity extends AppCompatActivity {
 
+    public static int color;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
