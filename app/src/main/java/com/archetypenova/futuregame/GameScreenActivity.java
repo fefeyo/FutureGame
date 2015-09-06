@@ -113,7 +113,7 @@ public class GameScreenActivity extends AppCompatActivity
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         for(int i = 0; i < cOptions.length; i++){
-            cOptions[i] = createSpot(Color.GREEN, spots[i]);
+            cOptions[i] = createSpot(getResources().getColor(R.color.flat), spots[i]);
             mMap.addCircle(cOptions[i]);
         }
 
