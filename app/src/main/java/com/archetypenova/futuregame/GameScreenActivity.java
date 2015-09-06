@@ -27,7 +27,15 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,7 +57,7 @@ public class GameScreenActivity extends AppCompatActivity
 
     private static GameScreenActivity mActivity;
 
-    private static int red,blue;
+    private static int red,blue, flat;
 
     private LocationRequest mLocationRequest;
 
@@ -61,8 +69,10 @@ public class GameScreenActivity extends AppCompatActivity
         mActivity = this;
         red = getResources().getColor(R.color.red);
         blue = getResources().getColor(R.color.blue);
+        flat = getResources().getColor(R.color.flat);
 
-        spot1 = new LatLng(35.665722, 139.740220);
+//        spot1 = new LatLng(35.665722, 139.740220);
+        spot1 = new LatLng(35.6657682, 139.7391229);
         spot2 = new LatLng(35.665526, 139.739272);
         spot3= new LatLng(35.664913, 139.739032 );
         spot4= new LatLng(35.666189, 139.739612);
@@ -70,6 +80,8 @@ public class GameScreenActivity extends AppCompatActivity
 
         spots = new LatLng[]{spot1, spot2, spot3, spot4, spot5};
         cOptions = new CircleOptions[5];
+
+        getFlagData();
 
         onMapReadyIfNeeded();
 
@@ -143,31 +155,42 @@ public class GameScreenActivity extends AppCompatActivity
     }
 
     public static void syncSpot(final HashMap<Integer, Integer> flagState){
+        Log.i("flagState", ""+flagState.toString());
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mMap.clear();
                 //TODO:陣の色の変更と陣のアイコンの変更と反映
-                int i = 0;
+                int i = 1;
                 for (CircleOptions co : cOptions) {
-                    if(flagState.get(i) == 1) {
+                    if (flagState.get(i) == 1) {
                         co.fillColor(red);
-                    }else {
+                    } else if(flagState.get(i) == -1){
                         co.fillColor(blue);
+                    }else{
+                        co.fillColor(flat);
                     }
-                        mMap.addCircle(co);
-                        resetMarker(co);
+                    mMap.addCircle(co);
+                    resetMarker(co);
+                    i++;
                 }
             }
         });
     }
 
     public static void setPlayerMarker(final LatLng[] position) {
-        for (int i = 0; i < position.length; i++) {
-            final MarkerOptions mo = new MarkerOptions();
-            mo.icon(BitmapDescriptorFactory.fromResource(R.mipmap.user_blue));
-            mo.position(position[i]);
-            mMap.addMarker(mo);
+        if(null != position[2]) {
+            mActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i < position.length; i++) {
+                        final MarkerOptions mo = new MarkerOptions();
+                        mo.icon(BitmapDescriptorFactory.fromResource(R.mipmap.user_blue));
+                        mo.position(position[i]);
+                        mMap.addMarker(mo);
+                    }
+                }
+            });
         }
     }
 
@@ -175,7 +198,7 @@ public class GameScreenActivity extends AppCompatActivity
         if(red == co.getFillColor()){
             //　チームアイコン追加(赤)
             addMarker(R.mipmap.ika_red, co.getCenter());
-        }else{
+        }else if(blue == co.getFillColor()) {
             //　チームアイコン追加(青)
             addMarker(R.mipmap.ika_blue, co.getCenter());
         }
@@ -249,4 +272,46 @@ public class GameScreenActivity extends AppCompatActivity
         now = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(now, 18));
     }
+
+    public void getFlagData(){
+        Log.i("hoge", "getFlagData()");
+        final HashMap<Integer, Integer> flagState = new HashMap<>();
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.get(
+                getApplicationContext(),
+                "http://54.65.82.21/checkFlag.php",
+                null,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            final String result = new String(responseBody, "UTF-8");
+                            Log.i("hoge","result ="+result);
+                            final JSONObject json = new JSONObject(result);
+                            Log.i("hoge","json ="+json.toString());
+                            final JSONArray flags = json.getJSONArray("flag_info");
+                            Log.i("hoge","flags ="+flags.toString());
+                            for (int i = 0; i < flags.length(); i++) {
+                                final JSONObject flag = flags.getJSONObject(i);
+                                flagState.put(flag.getInt("flag_id"), flag.getInt("joukyou"));
+                            }
+                        } catch (UnsupportedEncodingException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Log.i("hoge", "statuscode =" + statusCode);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        super.onFinish();
+                        syncSpot(flagState);
+                    }
+                }
+        );
+    }
+
 }

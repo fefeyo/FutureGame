@@ -8,9 +8,11 @@ import android.widget.Toast;
 
 import com.archetypenova.futuregame.GameScreenActivity;
 import com.archetypenova.futuregame.ResultActivity;
+import com.archetypenova.futuregame.fragments.matching.SwitchMatchingFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -34,7 +36,8 @@ public class GeofenceService extends IntentService{
     private Runnable checkData = new Runnable() {
         @Override
         public void run() {
-            getUserData();
+            Log.i("check_data", "check_data");
+//            getUserData();
             getFlagData();
             mHanlder.postDelayed(this, 5000);
         }
@@ -52,11 +55,10 @@ public class GeofenceService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.i("id", intent.getIntExtra("id", 1000)+"");
-        Toast.makeText(getApplicationContext(), intent.getIntExtra("id", 100000)+"", Toast.LENGTH_SHORT).show();
         playerPosition = new LatLng[4];
         flagState = new HashMap<>();
         mHanlder = new Handler();
+        getFlag(intent.getIntExtra("id", 10000));
         mHanlder.post(checkData);
     }
 
@@ -92,7 +94,31 @@ public class GeofenceService extends IntentService{
         );
     }
 
-    private void getFlagData(){
+    private void getFlag(final int flag_id){
+        final RequestParams params = new RequestParams();
+        params.put("color", 0);
+        params.put("flag_id", flag_id);
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.get(
+                getApplicationContext(),
+                "http://54.65.82.21/getFlag.php",
+                params,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                }
+        );
+    }
+
+    public void getFlagData(){
+        Log.i("hoge", "getFlagData()");
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(
                 getApplicationContext(),
@@ -108,7 +134,7 @@ public class GeofenceService extends IntentService{
                             final JSONArray flags = json.getJSONArray("flag_info");
                             for(int i = 0;i < flags.length(); i++){
                                 final JSONObject  flag = flags.getJSONObject(i);
-                                flags.put(flag.getInt("flag_id"), flag.getInt("joukyou"));
+                                flagState.put(flag.getInt("flag_id"), flag.getInt("joukyou"));
                             }
                         }catch (UnsupportedEncodingException|JSONException e){
                             e.printStackTrace();
@@ -117,15 +143,48 @@ public class GeofenceService extends IntentService{
                     }
 
                     @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {}
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Log.i("hoge", "statuscode ="+statusCode);
+                    }
                 }
         );
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopSelf();
     }
 
     private void moveResult(){
         mHanlder.removeCallbacks(checkData);
         final Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
         startActivity(intent);
+    }
+
+    private void zahyo(){
+        final RequestParams params = new RequestParams();
+        params.put("room_id", "");
+        params.put("uesr_id", "");
+        params.put("lat", "");
+        params.put("lng", "");
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.get(
+                getApplicationContext(),
+                "http://54.65.82.21/zahyo.php",
+                null,
+                new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                }
+        );
     }
 
 }

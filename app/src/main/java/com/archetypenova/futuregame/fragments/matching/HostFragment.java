@@ -19,6 +19,7 @@ import com.archetypenova.futuregame.GameScreenActivity;
 import com.archetypenova.futuregame.MatchingActivity;
 import com.archetypenova.futuregame.R;
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.google.android.gms.games.Game;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -91,6 +92,8 @@ public class HostFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.match_start:
                 clickEnable();
+                final Intent intent = new Intent(getActivity().getApplicationContext(), GameScreenActivity.class);
+                startActivity(intent);
                 break;
         }
     }
