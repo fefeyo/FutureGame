@@ -3,9 +3,11 @@ package com.archetypenova.futuregame;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +16,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingRequest;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,13 +32,15 @@ import java.util.ArrayList;
 
 public class GameScreenActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener
+        GoogleApiClient.OnConnectionFailedListener,
+        LocationListener
 {
 
     private static GoogleMap mMap;
     private GoogleApiClient mApiClient;
 
-    private static LatLng spot1, spot2, spot3, spot4, spot5, now;
+    private static LatLng spot1, spot2, spot3, spot4, spot5;
+    public static LatLng now;
     private static LatLng[] spots;
 
     private static CircleOptions co1, co2, co3, co4, co5;
@@ -43,6 +49,8 @@ public class GameScreenActivity extends AppCompatActivity
     private static GameScreenActivity mActivity;
 
     private static int red,blue;
+
+    private LocationRequest mLocationRequest;
 
 
     @Override
@@ -58,8 +66,8 @@ public class GameScreenActivity extends AppCompatActivity
         spot3= new LatLng(35.664913, 139.739032 );
         spot4= new LatLng(35.666189, 139.739612);
         spot5 = new LatLng(35.664135, 139.738844);
-        now = new LatLng(35.665126, 139.739018);
-        spots = new LatLng[]{spot1, spot2, spot3, spot4, spot5, now};
+
+        spots = new LatLng[]{spot1, spot2, spot3, spot4, spot5};
         cOptions = new CircleOptions[5];
 
         onMapReadyIfNeeded();
@@ -101,11 +109,11 @@ public class GameScreenActivity extends AppCompatActivity
     //　マップの詳細設定
     private void createMapReady() {
         mMap.setMyLocationEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(now, 18));
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         for(int i = 0; i < cOptions.length; i++){
-            cOptions[i] = createSpot(Color.RED, spots[i]);
+            cOptions[i] = createSpot(Color.GREEN, spots[i]);
             mMap.addCircle(cOptions[i]);
         }
 
@@ -139,11 +147,22 @@ public class GameScreenActivity extends AppCompatActivity
             public void run() {
                 mMap.clear();
                 //TODO:陣の色の変更と陣のアイコンの変更と反映
-                for(CircleOptions co : cOptions){
+                for (CircleOptions co : cOptions) {
+                    co.fillColor(red);
+                    mMap.addCircle(co);
                     resetMarker(co);
                 }
             }
         });
+    }
+
+    public static void setPlayerMarker(final LatLng[] position) {
+        for (int i = 0; i < position.length; i++) {
+            final MarkerOptions mo = new MarkerOptions();
+            mo.icon(BitmapDescriptorFactory.fromResource(R.mipmap.user_blue));
+            mo.position(position[i]);
+            mMap.addMarker(mo);
+        }
     }
 
     private static void resetMarker(final CircleOptions co){
@@ -163,34 +182,44 @@ public class GameScreenActivity extends AppCompatActivity
         mMap.addMarker(mo);
     }
 
-    private GeofencingRequest getGeofencingRequest() {
+    private GeofencingRequest getGeofencingRequest(final int id) {
         final GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
         builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_DWELL);
-        final ArrayList<Geofence> spotList = new ArrayList<>();
-
-        for(int i = 0; i < spots.length; i++){
-            spotList.add(createGeoPoint("s"+i, Geofence.GEOFENCE_TRANSITION_DWELL, spots[i].latitude, spots[i].longitude));
-        }
-        builder.addGeofences(spotList);
+        builder.addGeofence(createGeoPoint("s" + id, Geofence.GEOFENCE_TRANSITION_DWELL, spots[id].latitude, spots[id].longitude));
 
         return builder.build();
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
     //　GoogleApi接続成功
     @Override
     public void onConnected(Bundle bundle) {
-        final Intent  i = new Intent(getApplicationContext(), GeofenceService.class);
         try{
+            for(int i = 0; i < 5;i++) {
+                final Intent  intent = new Intent(getApplicationContext(), GeofenceService.class);
+                intent.putExtra("id", i);
+                LocationServices.GeofencingApi.addGeofences(
+                        mApiClient,
+                        getGeofencingRequest(i),
+                        PendingIntent.getService(
+                                getApplicationContext(),
+                                i,
+                                intent,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        )
+                );
+            }
 
-            LocationServices.GeofencingApi.addGeofences(
+            mLocationRequest = LocationRequest.create();
+            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            mLocationRequest.setInterval(1000);
+            LocationServices.FusedLocationApi.requestLocationUpdates(
                     mApiClient,
-                    getGeofencingRequest(),
-                    PendingIntent.getService(
-                            getApplicationContext(),
-                            0,
-                            i,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    )
+                    mLocationRequest,
+                    this
             );
 
         }catch (SecurityException e){
@@ -206,5 +235,12 @@ public class GameScreenActivity extends AppCompatActivity
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.i("現在地", "緯度"+location.getLatitude()+"経度"+location.getLongitude());
+        now = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(now, 18));
     }
 }
