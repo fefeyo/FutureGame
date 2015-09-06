@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
         mPrefrerences = getActivity().getSharedPreferences("area_hack", Context.MODE_PRIVATE);
 
         createRoom();
+        checkUser();
 
         return v;
     }
@@ -108,6 +110,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                             final String result = new String(responseBody,"UTF-8");
                             JSONObject json = new JSONObject(result);
                             start = json.getBoolean("judge");       //TODO カラム名の入力(StartAPI)
+                            Log.d("startttttttttttt",""+start);
                         }catch (UnsupportedEncodingException|JSONException e){
                             e.printStackTrace();
                         }
@@ -124,7 +127,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
     private void setAdapter(){
 
         adapter = new ArrayAdapter<>(
-                getActivity().getApplicationContext(),
+                getActivity(),
                 android.R.layout.simple_list_item_1,
                 names
         );
@@ -147,6 +150,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                             final String result = new String(responseBody,"UTF-8");
                             JSONObject json = new JSONObject(result);
                             MatchingActivity.roomId = json.getString("room_id");
+                            Log.d("",""+MatchingActivity.roomId);
                         }catch (UnsupportedEncodingException | JSONException e){
                             e.printStackTrace();
                         }
@@ -236,6 +240,7 @@ public class HostFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void onFinish() {
                         super.onFinish();
+                        Log.d("namename",""+names[0]);
                         if (mHandler==null){
                             mHandler = new Handler();
                             mHandler.post(runnable);
